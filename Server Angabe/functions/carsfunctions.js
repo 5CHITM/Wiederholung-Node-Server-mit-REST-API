@@ -15,13 +15,20 @@ function changeStatus(carId, newCarStatus) {
 }
 
 function delCar(carId) {
-  cars.splice(cars.map(el=> {return el.id}).indexOf(parseInt(carId)), 1);
-  return "Car deleted";
+  cars.splice(
+    cars
+      .map((el) => {
+        return el.id;
+      })
+      .indexOf(parseInt(carId)),
+    1,
+  );
+  return 'Car deleted';
 }
 
 function insertCar(e) {
   cars.push(e);
-  return "Created car";
+  return 'Created car';
 }
 
 module.exports = { getCars, getCar, changeStatus, delCar, insertCar };
