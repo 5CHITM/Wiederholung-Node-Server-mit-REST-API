@@ -1,16 +1,29 @@
 const express = require('express');
-// const asyncHandler = require('express-async-handler');
+const asyncHandler = require('express-async-handler');
 
-const { getCars, getCar, changeStatus } = require('../functions/carsfunctions.js');
+const { getCars, getCar, changeStatus, delCar, insertCar } = require('../functions/carsfunctions.js');
 
 const router = express.Router();
 
-router.get('/hello', (req, res) => res.send('Hello'));
+router.get('/cars', asyncHandler(async (req, res) => {
+  res.status(200).json(getCars());
+}));
 
-router.get('/cars', (req, res) => res.status(200).json(getCars()));
+router.get('/car/:id', asyncHandler(async (req, res) => {
+  res.status(200).send(getCar(req.params.id));
+}));
 
-router.get('/car/:id', (req, res) => res.status(200).send(getCar(req.params.id)));
+router.put('/car/:id', asyncHandler(async (req, res) => {
+  res.status(200).send(changeStatus(req.params.id, req.body.status));
+}));
 
-router.put('/car/:id', (req, res) => res.status(200).send(changeStatus(req.params.id, req.body.status)));
+router.delete('/car/:id', asyncHandler(async (req, res) => {
+  res.status(200).send(delCar(req.params.id));
+}));
+
+router.post('/car', asyncHandler(async (req, res) => {
+  res.status(200).send(insertCar(req.body.car));
+}));
+
 
 module.exports = router;

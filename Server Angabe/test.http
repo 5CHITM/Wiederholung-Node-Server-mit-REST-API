@@ -6,5 +6,26 @@ put http://127.0.0.1:3000/car/1
 content-type: application/json
 
 {
-	"status": "Test"
+	"status": "sold"
+}
+###
+delete http://127.0.0.1:3000/car/1
+###
+post http://127.0.0.1:3000/car
+content-type: application/json
+
+{
+	"car": {
+		"title": "Bargain!",
+		"status": "available",
+		"price": "367.100 $",
+		"image": "http://localhost:3000/images/car9.png",
+		"miles": 85549,
+		"yearOfMake": 2012,
+		"owner": {
+		"firstName": "Robert",
+		"lastName": "Baumgartner"
+		},
+		"description": "Lorem ipsum dolor sit amet."
+	}
 }

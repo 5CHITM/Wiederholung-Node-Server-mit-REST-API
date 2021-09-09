@@ -9,12 +9,19 @@ function getCar(carId) {
 }
 
 function changeStatus(carId, newCarStatus) {
-  console.log(newCarStatus);
-  let car = cars.find((el) => el.id == carId);
+  const car = cars.find((el) => el.id == carId);
   car.status = newCarStatus;
-  console.log(car);
-
   return `Car status changed to ${newCarStatus}`;
 }
 
-module.exports = { getCars, getCar, changeStatus };
+function delCar(carId) {
+  cars.splice(cars.map(el=> {return el.id}).indexOf(parseInt(carId)), 1);
+  return "Car deleted";
+}
+
+function insertCar(e) {
+  cars.push(e);
+  return "Created car";
+}
+
+module.exports = { getCars, getCar, changeStatus, delCar, insertCar };
