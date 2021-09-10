@@ -15,19 +15,15 @@ function changeStatus(carId, newCarStatus) {
 }
 
 function delCar(carId) {
-  cars.splice(
-    cars
-      .map((el) => {
-        return el.id;
-      })
-      .indexOf(parseInt(carId)),
-    1,
-  );
+  cars.splice(cars.map((el) => el.id).indexOf(parseInt(carId, 10)), 1);
   return 'Car deleted';
 }
 
 function insertCar(e) {
-  cars.push(e);
+  const id = Math.max(...cars.map((el) => el.id)) + 1;
+  const newCar = e;
+  newCar.id = id;
+  cars.push(newCar);
   return 'Created car';
 }
 
