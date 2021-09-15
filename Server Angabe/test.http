@@ -1,6 +1,6 @@
 get http://127.0.0.1:3000/cars
 ###
-get http://127.0.0.1:3000/car/1
+get http://127.0.0.1:3000/car/10
 ###
 put http://127.0.0.1:3000/car/1
 content-type: application/json
