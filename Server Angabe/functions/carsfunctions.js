@@ -5,11 +5,11 @@ function getCars() {
 }
 
 function getCar(carId) {
-  return cars.find((el) => el.id == carId);
+  return cars.find((el) => el.id === Number(carId));
 }
 
 function changeStatus(carId, newCarStatus) {
-  const car = cars.find((el) => el.id == carId);
+  const car = cars.find((el) => el.id === Number(carId));
   car.status = newCarStatus;
   return `Car status changed to ${newCarStatus}`;
 }
