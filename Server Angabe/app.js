@@ -5,6 +5,7 @@ const path = require('path');
 const routes = require('./routes');
 require('colors');
 require('dotenv').config();
+const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
 
 const app = express();
 
@@ -16,6 +17,10 @@ app.use(helmet());
 app.use(express.json());
 
 app.use('/', routes);
+
+app.use(errorHandler);
+
+app.use(notFoundHandler);
 
 const PORT = process.env.PORT ?? 5000;
 
